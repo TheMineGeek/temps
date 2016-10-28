@@ -15,6 +15,10 @@ mongoose.connect('mongodb://mongo.local/temp', (err) => {
   else console.log('Connected to database')
 })
 
+app.get('/', (req, res) => {
+  res.send('API running')
+})
+
 app.post('/', (req, res) => {
   //console.log(req.body)
   let cpusData = req.body.cpus.split("\n")
