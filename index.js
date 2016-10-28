@@ -20,12 +20,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  //console.log(req.body)
   let cpusData = req.body.cpus.split("\n")
   let hddData = req.body.disks.split("\n")
-
-  console.log(cpusData)
-  console.log(hddData)
 
   let i = 0;
   while(i != cpusData.length) {
@@ -76,11 +72,9 @@ app.post('/', (req, res) => {
   tempReport.temps.disks = disks
   tempReport.temps.avdisks = avdisks
 
-  console.log(tempReport)
-
   tempReport.save((err) => {
     if(err) throw err
-    console.log("Saved to database")
+    console.log(Date.now + "Saved to database")
     res.send("done")
   })
 })
