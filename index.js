@@ -15,8 +15,15 @@ mongoose.connect('mongodb://mongo.local/temp', (err) => {
   else console.log('Connected to database')
 })
 
-app.get('/', (req, res) => {
+app.get('/info', (req, res) => {
   res.send('API running')
+})
+
+app.get('/', (req, res) => {
+  Temp.find().limit(50).exec((err, data) => {
+    if(err) throw err;
+    res.send(data);
+  })
 })
 
 app.post('/', (req, res) => {
